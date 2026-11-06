@@ -11,7 +11,6 @@ jobs:
       - name: Checkout do Código
         uses: actions/checkout@v4
 
-      # Conecta o GitHub Actions à sua rede privada do Tailscale usando a Auth Key
       - name: Conectar ao Tailscale
         uses: tailscale/github-action@v2
         with:
