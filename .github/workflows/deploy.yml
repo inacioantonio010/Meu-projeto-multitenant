@@ -11,10 +11,24 @@ jobs:
       - name: Checkout do Código
         uses: actions/checkout@v4
 
+      # Conecta o GitHub Actions à sua rede privada do Tailscale
+      - name: Conectar ao Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      # Ou, se preferir usar uma Auth Key estática gerada no painel do Tailscale:
+      # - name: Conectar ao Tailscale (Auth Key)
+      #   uses: tailscale/github-action@v2
+      #   with:
+      #     authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
       - name: Executando Deploy via SSH na VM
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.VM_HOST }}
+          host: 100.121.27.82
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           port: 22
