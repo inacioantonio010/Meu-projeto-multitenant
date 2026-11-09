@@ -58,8 +58,8 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SRV_HOST }}
-          username: ${{ secrets.SRV_USERNAME }}
-          key: ${{ secrets.SRV_KEY }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
           script: |
             cd ~/deploy/${{ matrix.client }}
             VERSION="${{ steps.version.outputs.version }}"
