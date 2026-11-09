@@ -49,7 +49,7 @@ jobs:
         uses: tailscale/github-action@v2
         with:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-          version: latest
+          version: v1.64.0
 
       - name: Set version
         id: version
