@@ -73,5 +73,5 @@ jobs:
             else
               echo "APP_VERSION=$VERSION" > .env
             fi
-            docker compose pull app
-            docker compose up -d app
+            docker-compose pull app
+            docker-compose up -d app
